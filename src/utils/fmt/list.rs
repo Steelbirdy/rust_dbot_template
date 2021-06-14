@@ -1,5 +1,11 @@
 use std::fmt::Display;
 
+/// Formats a list nicely for discord.
+/// `sep` is the string that will separate the items in the list.
+/// For example, separating ['a', 'b', 'c'] by ', ' would result in "a, b, c".
+///
+/// `conjunction` is the string that will separate the last item from the rest of the list.
+/// Using the same example above with the conjunction ', or ' would result is "a, b, or c"
 pub fn format_list<T>(list: &[T], sep: &str, conjunction: Option<&str>) -> Option<String>
 where
     T: Display,

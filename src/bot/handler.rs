@@ -23,7 +23,6 @@ impl EventHandler for Handler {
             .expect("Expected an environment variable named `COMMAND_PREFIX` containing the bot's command prefix");
 
         let activity_str = format!("{}help", prefix);
-
         ctx.set_activity(Activity::playing(activity_str)).await;
 
         info!("{} is connected!", ready.user.name);

@@ -1,5 +1,7 @@
 use std::time::Duration;
 
+/// Format a duration (in days, hours, minutes, and seconds)
+/// nicely for discord.
 pub fn format_duration(duration: Duration, compact: bool) -> String {
     let div_mod = |a: u64, b: u64| (a / b, a % b);
 

@@ -32,6 +32,7 @@ pub async fn dispatch_error(ctx: &Context, msg: &Message, error: DispatchError) 
     }
 }
 
+/// If a check failed, we use the reason to determine where to display the error
 async fn check_failed(ctx: &Context, msg: &Message, check_name: &str, reason: Reason) {
     match reason {
         Reason::User(err_msg) => {
@@ -48,6 +49,8 @@ async fn check_failed(ctx: &Context, msg: &Message, check_name: &str, reason: Re
     }
 }
 
+/// Send a list of the permissions the bot is missing to run the command
+/// to the channel.
 async fn lacking_permissions(ctx: &Context, msg: &Message, permissions: Permissions) {
     let names: Vec<_> = permissions
         .get_permission_names()
@@ -66,6 +69,7 @@ async fn lacking_permissions(ctx: &Context, msg: &Message, permissions: Permissi
     let _ = msg.reply(ctx, content).await;
 }
 
+/// Tell the caller how long it will be until they can use the command again.
 async fn ratelimited(ctx: &Context, msg: &Message, info: RateLimitInfo) {
     let duration_fmt = format_duration(info.rate_limit, false);
 

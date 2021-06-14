@@ -5,6 +5,7 @@ use serenity::{
 };
 use tracing::error;
 
+/// If the command returned an error, display it in the console
 #[hook]
 pub(crate) async fn after(
     _: &Context,
